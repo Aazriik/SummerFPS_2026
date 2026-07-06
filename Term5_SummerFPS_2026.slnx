@@ -10,14 +10,14 @@
     <Platform Name="Win64-arm64ec" />
   </Configurations>
   <Folder Name="/Engine/">
-    <Project Path="Intermediate/ProjectFiles/UE5.vcxproj" Id="6c37eebc-bf29-36e0-9e94-5bdc639afd87">
+    <Project Path="Intermediate/ProjectFiles/UE5.vcxproj" Id="65c92759-300d-3d3f-bca2-3b0e205d0657">
       <BuildType Project="BuiltWithUnrealBuildTool" />
       <Platform Project="Win64" />
       <Build Project="false" />
     </Project>
   </Folder>
   <Folder Name="/Games/">
-    <Project Path="Intermediate/ProjectFiles/Term5_SummerFPS_2026.vcxproj" Id="f9b29183-b7bc-39e2-9368-b9bfa6ea52fd">
+    <Project Path="Intermediate/ProjectFiles/Term5_SummerFPS_2026.vcxproj" Id="0ebae642-e98e-3dc3-b52a-7b99ab3212be">
       <BuildType Solution="DebugGame Editor|Win64" Project="DebugGame_Editor" />
       <BuildType Solution="DebugGame Editor|Win64-arm64" Project="Win64_arm64_DebugGame_Editor" />
       <BuildType Solution="DebugGame Editor|Win64-arm64ec" Project="Win64_arm64ec_DebugGame_Editor" />
