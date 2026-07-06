@@ -1,0 +1,22 @@
+{
+	"FileVersion": 3,
+	"EngineAssociation": "{CE1B529A-427F-6570-BED0-698C9C75388C}",
+	"Category": "",
+	"Description": "",
+	"Modules": [
+		{
+			"Name": "Term5_SummerFPS_2026",
+			"Type": "Runtime",
+			"LoadingPhase": "Default"
+		}
+	],
+	"Plugins": [
+		{
+			"Name": "ModelingToolsEditorMode",
+			"Enabled": true,
+			"TargetAllowList": [
+				"Editor"
+			]
+		}
+	]
+}
