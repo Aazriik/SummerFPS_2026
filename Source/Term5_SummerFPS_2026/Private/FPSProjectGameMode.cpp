@@ -13,4 +13,37 @@ void AFPSProjectGameMode::StartPlay()
 	// Display a debug message for five seconds.
 	// The -1 "Key" value argument prevents the message from being updated or refreshed.
 	GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Yellow, TEXT("Hello World, this is FPSGameMode! HELLO im Artemis"));
+
+	// 2. Print to log
+	UE_LOG(LogTemp, Warning, TEXT("Hello World"));
+
+	// 3. Printing values using specifiers.
+	int TestNumber = 5;
+	bool TestBool = true;
+	UE_LOG(LogTemp, Warning, TEXT("Test Number: %i"), TestNumber);
+	UE_LOG(LogTemp, Warning, TEXT("Test Bool: %i"), TestBool);
+	UE_LOG(LogTemp, Warning, TEXT("Test Bool: %s"), TestBool ? TEXT("true") : TEXT("false"));
+
+	// 4. Pointers & References
+	int* TestNumberPtr = &TestNumber;
+
+	UE_LOG(LogTemp, Warning, TEXT("TestNumber Ref: %p"), &TestNumber);
+	UE_LOG(LogTemp, Warning, TEXT("TestNumber Ptr: %p"), TestNumberPtr);
+
+	UE_LOG(LogTemp, Warning, TEXT("This will be large number: %i"), TestNumberPtr);
+
+	UE_LOG(LogTemp, Warning, TEXT("TestNumber: %i"), *TestNumberPtr); // Dereferencing the pointer to get the value it points to.
+
+	// 5. Giving a nickname to a variable
+	int& NicknameForTestNumber = TestNumber;
+	NicknameForTestNumber = 10;
+	UE_LOG(LogTemp, Warning, TEXT("New Test Number: %i"), TestNumber);
+
+	// 6. Printing a string
+	FString TestString = TEXT("Hello, Unreal!");
+	UE_LOG(LogTemp, Warning, TEXT("Test String: %s"), *TestString);
+
+	//7. Causing a crash with a pointer
+	/*int* CrashPointer = nullptr;
+	UE_LOG(LogTemp, Warning, TEXT("This will cause a crash: %i"), *CrashPointer);*/
 }
