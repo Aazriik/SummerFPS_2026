@@ -2,6 +2,7 @@
 
 
 #include "FPSProjectGameMode.h"
+#include "Logging/StructuredLog.h"
 
 void AFPSProjectGameMode::StartPlay()
 {
@@ -46,4 +47,7 @@ void AFPSProjectGameMode::StartPlay()
 	//7. Causing a crash with a pointer
 	/*int* CrashPointer = nullptr;
 	UE_LOG(LogTemp, Warning, TEXT("This will cause a crash: %i"), *CrashPointer);*/
+
+	// 8. Using structured logging
+	UE_LOGFMT(LogTemp, Warning, "Structured Logging: Test Number: {0}, Test Bool: {1}, Test String: {2}", TestNumber, TestBool, *TestString);
 }
