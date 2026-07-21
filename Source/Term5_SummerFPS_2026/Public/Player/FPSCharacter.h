@@ -2,6 +2,8 @@
 
 #pragma once
 
+#include "Camera/CameraComponent.h"
+#include "Components/CapsuleComponent.h"
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
 #include "FPSCharacter.generated.h"
@@ -44,6 +46,18 @@ public:
 
 	UPROPERTY(EditDefaultsOnly, Category = "Input")
 	UInputAction* FireAction;
+
+
+
+	// Use Camera Component
+	UPROPERTY(VisibleAnywhere)
+	UCameraComponent* FPSCameraComponent;
+
+	// Use Skeletal Mesh Component
+	UPROPERTY(VisibleAnywhere)
+	USkeletalMeshComponent* FPSMeshComponent;
+
+
 
 	// Input Handling Functions
 	UFUNCTION()

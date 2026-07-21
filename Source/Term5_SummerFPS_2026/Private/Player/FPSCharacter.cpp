@@ -13,6 +13,19 @@ AFPSCharacter::AFPSCharacter()
 
 	UE_LOG(LogTemp, Warning, TEXT("Player Constructor Being Called"));
 
+	FPSCameraComponent = CreateDefaultSubobject<UCameraComponent>(TEXT("FPSCameraComponent"));
+	FPSCameraComponent->SetupAttachment(CastChecked<USceneComponent, UCapsuleComponent>(GetCapsuleComponent())); // Attach to Capsule Component
+	FPSCameraComponent->SetRelativeLocation(FVector(0.0f, 0.0f, 50.0f + BaseEyeHeight)); // Position the camera
+	FPSCameraComponent->bUsePawnControlRotation = true; // Rotate the camera based on the controller
+
+	FPSMeshComponent = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("FPSMeshComponent"));
+	FPSMeshComponent->SetupAttachment(FPSCameraComponent);
+	FPSMeshComponent->bCastDynamicShadow = false;
+	FPSMeshComponent->CastShadow = false;
+
+	GetMesh()->SetOwnerNoSee(true);
+	
+
 	// Soft locking our editor
 	//int* CrashPointer = nullptr;
 	//UE_LOG(LogTemp, Warning, TEXT("This will cause a soft crash where we can't open the editor: %i"), *CrashPointer);
