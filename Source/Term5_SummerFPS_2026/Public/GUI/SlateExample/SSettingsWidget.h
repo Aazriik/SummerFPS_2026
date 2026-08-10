@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "HUD/GameHUD.h"
 #include "Widgets/SCompoundWidget.h"
 
 /**
@@ -13,10 +14,12 @@ class TERM5_SUMMERFPS_2026_API SSettingsWidget : public SCompoundWidget
 public:
 	SLATE_BEGIN_ARGS(SSettingsWidget)
 	{}
+	SLATE_ARGUMENT(TWeakObjectPtr<class AGameHUD>, GameHUD)
 	SLATE_ARGUMENT(int, MyInt)
 	SLATE_END_ARGS()
 
 	int MyInt;
+	TWeakObjectPtr<class AGameHUD> GameHUD;
 
 	/** Constructs this widget with InArgs */
 	void Construct(const FArguments& InArgs);

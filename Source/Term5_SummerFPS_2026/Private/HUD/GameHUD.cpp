@@ -9,7 +9,10 @@ void AGameHUD::BeginPlay()
 	Super::BeginPlay();
 
 	// 2. Spawn & show slate
-	ShowSettingsWidget();
+	// ShowSettingsWidget();
+
+	// 3. Spawn & Show UMG
+	SpawnGameMenuWidget();
 }
 
 void AGameHUD::DrawHUD()
@@ -45,7 +48,7 @@ void AGameHUD::DrawHUD()
 
 void AGameHUD::ShowSettingsWidget()
 {
-	SettingsWidget = SNew(SSettingsWidget);
+	SettingsWidget = SNew(SSettingsWidget).MyInt(6548).GameHUD(this);
 	GEngine->GameViewport->AddViewportWidgetContent(SAssignNew(SettingsWidgetContainer, SWeakWidget).PossiblyNullContent(SettingsWidget.ToSharedRef()));
 
 	PlayerOwner->bShowMouseCursor = true;
@@ -55,6 +58,23 @@ void AGameHUD::ShowSettingsWidget()
 void AGameHUD::HideSettingsWidget()
 {
 	GEngine->GameViewport->RemoveViewportWidgetContent(SettingsWidgetContainer.ToSharedRef());
+
+	PlayerOwner->bShowMouseCursor = false;
+	PlayerOwner->SetInputMode(FInputModeGameOnly());
+}
+
+void AGameHUD::SpawnGameMenuWidget()
+{
+	if (!GameMenuWidgetClass) return;
+
+	// Delete game menu widget if it already exists
+	if (GameMenuWidgetContainer) {
+		GameMenuWidgetContainer->RemoveFromParent();
+		GameMenuWidgetContainer = nullptr;
+	}
+
+	GameMenuWidgetContainer = CreateWidget<UGameMenuWidget>(GetWorld(), GameMenuWidgetClass);
+	GameMenuWidgetContainer->AddToViewport();
 
 	PlayerOwner->bShowMouseCursor = false;
 	PlayerOwner->SetInputMode(FInputModeGameOnly());

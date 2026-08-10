@@ -8,6 +8,7 @@ BEGIN_SLATE_FUNCTION_BUILD_OPTIMIZATION
 void SSettingsWidget::Construct(const FArguments& InArgs)
 {
 	MyInt = InArgs._MyInt;
+	GameHUD = InArgs._GameHUD;
 
 	const FMargin SettingsMargin(800.0f, 300.0f);
 
@@ -91,6 +92,11 @@ void SSettingsWidget::Construct(const FArguments& InArgs)
 }
 FReply SSettingsWidget::OnResumeClicked() const
 {
+	if(GameHUD.IsValid())
+	{
+		GameHUD->HideSettingsWidget();
+	}
+
 	return FReply::Handled();
 }
 FReply SSettingsWidget::OnIntClicked() const
@@ -100,6 +106,11 @@ FReply SSettingsWidget::OnIntClicked() const
 }
 FReply SSettingsWidget::OnQuitClicked() const
 {
+	if(GameHUD.IsValid())
+	{
+		GameHUD->PlayerOwner->ConsoleCommand("quit");
+	}
+
 	return FReply::Handled();
 }
 END_SLATE_FUNCTION_BUILD_OPTIMIZATION
