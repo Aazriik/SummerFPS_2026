@@ -13,10 +13,17 @@ class TERM5_SUMMERFPS_2026_API SSettingsWidget : public SCompoundWidget
 public:
 	SLATE_BEGIN_ARGS(SSettingsWidget)
 	{}
+	SLATE_ARGUMENT(int, MyInt)
 	SLATE_END_ARGS()
+
+	int MyInt;
 
 	/** Constructs this widget with InArgs */
 	void Construct(const FArguments& InArgs);
+
+	FReply OnResumeClicked() const;
+	FReply OnIntClicked() const;
+	FReply OnQuitClicked() const;
 
 	/*
 		Smart Pointers
