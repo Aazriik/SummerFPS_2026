@@ -134,7 +134,7 @@ void AFPSCharacter::Fire()
 	FVector LaunchDirection = MuzzleRotation.Vector();
 	Projectile->FireInDirection(LaunchDirection);
 
-	OnHurtPlayer(10.0f);
+	// OnHurtPlayer(10.0f);
 }
 
 void AFPSCharacter::OnHurtPlayer(float DamageAmount)
