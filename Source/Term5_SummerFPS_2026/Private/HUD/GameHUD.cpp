@@ -15,9 +15,6 @@ void AGameHUD::BeginPlay()
 
 	// 3. Spawn & Show UMG
 	SpawnGameMenuWidget();
-
-	AFPSCharacter* PlayerCharacter = Cast<AFPSCharacter>(UGameplayStatics::GetPlayerCharacter(GetWorld(), 0));
-	PlayerCharacter->OnPlayerDied.AddDynamic(GameMenuWidgetContainer, &UGameMenuWidget::OnPlayerDiedUI);
 }
 
 void AGameHUD::DrawHUD()
