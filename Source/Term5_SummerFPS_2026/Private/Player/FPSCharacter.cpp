@@ -153,7 +153,14 @@ void AFPSCharacter::OnHurtPlayer(float DamageAmount)
 	{
 		// Handle player death (e.g., respawn, game over, etc.)
 		UE_LOG(LogTemp, Warning, TEXT("Player has died."));
-		UGameplayStatics::OpenLevel(GetWorld(), FName("Lvl_GameMap"));
+		// UGameplayStatics::OpenLevel(GetWorld(), FName("Lvl_GameMap"));
+		OnPlayerDied.Broadcast();
 	}
+}
+
+float AFPSCharacter::TakeDamage(float DamageAmount, FDamageEvent const& DamageEvent, AController* EventInstigator, AActor* DamageCauser)
+{
+	OnHurtPlayer(DamageAmount);
+	return DamageAmount;
 }
 

@@ -3,6 +3,8 @@
 
 #include "GUI/GameMenuWidget.h"
 #include "Kismet/KismetSystemLibrary.h"
+#include "Kismet/GameplayStatics.h"
+#include "Player/FPSCharacter.h"
 
 void UGameMenuWidget::NativeConstruct()
 {
@@ -12,6 +14,9 @@ void UGameMenuWidget::NativeConstruct()
 	UpdateScore(0);
 	UpdateTimer(60);
 	QuitButton->OnClicked.AddDynamic(this, &UGameMenuWidget::OnQuitClicked);
+
+	AFPSCharacter* PlayerCharacter = Cast<AFPSCharacter>(UGameplayStatics::GetPlayerCharacter(GetWorld(), 0));
+	PlayerCharacter->OnPlayerDied.AddDynamic(this, &UGameMenuWidget::OnPlayerDiedUI);
 }
 
 void UGameMenuWidget::UpdateHealthBar(float HealthPercent)
@@ -40,4 +45,14 @@ void UGameMenuWidget::UpdateTimer(int Time)
 void UGameMenuWidget::OnQuitClicked()
 {
 	UKismetSystemLibrary::QuitGame(GetWorld(), nullptr, EQuitPreference::Quit, false);
+}
+
+void UGameMenuWidget::OnPlayerDiedUI()
+{
+	if (!TimerText) return;
+
+	FString TimerString = FString::Printf(TEXT("PLAYER HAS DIED"));
+	TimerText->SetText(FText::FromString(TimerString));
+
+	UE_LOG(LogTemp, Warning, TEXT("Update UI for Player Death."));
 }

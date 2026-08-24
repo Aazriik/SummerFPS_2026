@@ -3,7 +3,11 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "AIController.h"
+#include "BehaviorTree/BlackboardComponent.h"
 #include "BehaviorTree/BTTaskNode.h"
+#include "Kismet/GameplayStatics.h"
+#include "Player/FPSCharacter.h"
 #include "Attack.generated.h"
 
 /**
@@ -14,4 +18,6 @@ class TERM5_SUMMERFPS_2026_API UAttack : public UBTTaskNode
 {
 	GENERATED_BODY()
 	
+public:
+	virtual EBTNodeResult::Type ExecuteTask(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory) override;
 };

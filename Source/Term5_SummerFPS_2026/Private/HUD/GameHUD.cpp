@@ -3,6 +3,8 @@
 
 #include "HUD/GameHUD.h"
 #include "Widgets/SWeakWidget.h"
+#include "Kismet/GameplayStatics.h"
+#include "Player/FPSCharacter.h"
 
 void AGameHUD::BeginPlay()
 {
@@ -13,6 +15,9 @@ void AGameHUD::BeginPlay()
 
 	// 3. Spawn & Show UMG
 	SpawnGameMenuWidget();
+
+	AFPSCharacter* PlayerCharacter = Cast<AFPSCharacter>(UGameplayStatics::GetPlayerCharacter(GetWorld(), 0));
+	PlayerCharacter->OnPlayerDied.AddDynamic(GameMenuWidgetContainer, &UGameMenuWidget::OnPlayerDiedUI);
 }
 
 void AGameHUD::DrawHUD()

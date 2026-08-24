@@ -12,6 +12,8 @@
 class UInputMappingContext;
 class UInputAction;
 
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnPlayerDied);
+
 UCLASS()
 class TERM5_SUMMERFPS_2026_API AFPSCharacter : public ACharacter
 {
@@ -86,6 +88,10 @@ public:
 
 	UFUNCTION()
 	void OnHurtPlayer(float DamageAmount);
+
+	virtual float TakeDamage(float DamageAmount, FDamageEvent const& DamageEvent, AController* EventInstigator, AActor* DamageCauser) override;
+
+	FOnPlayerDied OnPlayerDied;
 
 private:
 	float Health = 100.0f;

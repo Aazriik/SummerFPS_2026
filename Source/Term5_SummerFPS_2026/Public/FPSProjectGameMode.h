@@ -14,6 +14,10 @@ class TERM5_SUMMERFPS_2026_API AFPSProjectGameMode : public AGameModeBase
 {
 	GENERATED_BODY()
 
+public:
 	virtual void StartPlay() override;
+
+	UFUNCTION()
+	void GoToGameOver();
 	
 };

@@ -3,6 +3,8 @@
 
 #include "FPSProjectGameMode.h"
 #include "Logging/StructuredLog.h"
+#include "Kismet/GameplayStatics.h"
+#include "Player/FPSCharacter.h"
 
 void AFPSProjectGameMode::StartPlay()
 {
@@ -50,4 +52,14 @@ void AFPSProjectGameMode::StartPlay()
 
 	// 8. Using structured logging
 	UE_LOGFMT(LogTemp, Warning, "Structured Logging: Test Number: {0}, Test Bool: {1}, Test String: {2}", TestNumber, TestBool, *TestString);
+
+	// Get player and bind a function to when player died
+	AFPSCharacter* PlayerCharacter = Cast<AFPSCharacter>(UGameplayStatics::GetPlayerCharacter(GetWorld(), 0));
+	PlayerCharacter->OnPlayerDied.AddDynamic(this, &AFPSProjectGameMode::GoToGameOver);
+}
+
+void AFPSProjectGameMode::GoToGameOver()
+{
+	// UGameplayStatics::OpenLevel(GetWorld(), FName("Lvl_GameMap"));
+	UE_LOG(LogTemp, Warning, TEXT("Player has died. Going to Game Over screen."));
 }

@@ -29,6 +29,12 @@ public:
 	UFUNCTION()
 	void OnEnemyTakeDamage(float Amount);
 
+	UFUNCTION()
+	void OnPlayerDied();
+
+	UPROPERTY(EditAnywhere)
+	float EnemyDamage = 5.0f;
+
 private:
 	int Health = 100;
 
