@@ -22,6 +22,7 @@ class TERM5_SUMMERFPS_2026_API AFPSCharacter : public ACharacter
 public:
 	// Sets default values for this character's properties
 	AFPSCharacter();
+	// bool isGrabbing = false;
 
 protected:
 	// Called when the game starts or when spawned
@@ -49,6 +50,9 @@ public:
 
 	UPROPERTY(EditDefaultsOnly, Category = "Input")
 	UInputAction* FireAction;
+
+	UPROPERTY(EditDefaultsOnly, Category = "Input")
+	UInputAction* GrabAction;
 
 
 
@@ -85,6 +89,12 @@ public:
 
 	UFUNCTION()
 	void Fire();
+
+	UFUNCTION()
+	void StartGrab();
+
+	UFUNCTION()
+	void EndGrab();
 
 	UFUNCTION()
 	void OnHurtPlayer(float DamageAmount);

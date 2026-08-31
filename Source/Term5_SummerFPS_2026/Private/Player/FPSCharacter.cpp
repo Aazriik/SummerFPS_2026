@@ -70,6 +70,8 @@ void AFPSCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCompon
 		EnhancedInputComponent->BindAction(JumpAction, ETriggerEvent::Started, this, &AFPSCharacter::StartJump);
 		EnhancedInputComponent->BindAction(JumpAction, ETriggerEvent::Completed, this, &AFPSCharacter::EndJump);
 		EnhancedInputComponent->BindAction(FireAction, ETriggerEvent::Started, this, &AFPSCharacter::Fire);
+		EnhancedInputComponent->BindAction(GrabAction, ETriggerEvent::Started, this, &AFPSCharacter::StartGrab);
+		EnhancedInputComponent->BindAction(GrabAction, ETriggerEvent::Completed, this, &AFPSCharacter::EndGrab);
 	}
 
 }
@@ -105,18 +107,23 @@ void AFPSCharacter::EndJump()
 void AFPSCharacter::Fire()
 {
 	if (!ProjectileClass) return;
+	// if (isGrabbing)
+	// {
+		// If we are Grabbing, we want to add impulse to the object we are grabbing instead of firing a projectile.
+
+	// }
 
 	// Init relevant infomration for where the projectile will be
 	FVector CameraLocation;
 	FRotator CameraRotation;
 	GetActorEyesViewPoint(CameraLocation, CameraRotation);
 
-	MuzzleOffset.Set(100.0f, 0.0f, 0.0f);
+	MuzzleOffset.Set(100.0f, 0.0f, 50.0f);
 
 	FVector MuzzleLocation = CameraLocation + FTransform(CameraRotation).TransformVector(MuzzleOffset);
 
 	FRotator MuzzleRotation = CameraRotation;
-	MuzzleRotation.Pitch += 10.0f;
+	MuzzleRotation.Pitch += 0.0f;
 
 	// Start of spawning the projectile
 	UWorld* World = GetWorld();
@@ -135,6 +142,16 @@ void AFPSCharacter::Fire()
 	Projectile->FireInDirection(LaunchDirection);
 
 	// OnHurtPlayer(10.0f);
+}
+
+void AFPSCharacter::StartGrab()
+{
+
+}
+
+void AFPSCharacter::EndGrab()
+{
+
 }
 
 void AFPSCharacter::OnHurtPlayer(float DamageAmount)
