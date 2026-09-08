@@ -44,8 +44,8 @@ AFPSProjectile::AFPSProjectile()
 	ProjectileMovementComponent->InitialSpeed = BulletSpeed;
 	ProjectileMovementComponent->MaxSpeed = BulletSpeed;
 	ProjectileMovementComponent->bRotationFollowsVelocity = true;
-	ProjectileMovementComponent->bShouldBounce = true;
-	ProjectileMovementComponent->Bounciness = 0.3;
+	ProjectileMovementComponent->bShouldBounce = false;
+	ProjectileMovementComponent->Bounciness = 0.0;
 	ProjectileMovementComponent->ProjectileGravityScale = 0.0f; // No gravity
 
 	InitialLifeSpan = 3.0f; // Destroy after 3 seconds. Unity Destroy(3.0f);
@@ -91,6 +91,9 @@ void AFPSProjectile::OnWhateverWeWantToNameThis(UPrimitiveComponent* HitComponen
 		OtherComponent->AddImpulseAtLocation(ProjectileMovementComponent->Velocity * 100.0f, Hit.ImpactPoint);
 		Destroy();
 	}
+
+	// If hit any actor, destroy projectile
+	Destroy();
 
 	UE_LOG(LogTemp, Warning, TEXT("Projectile hit: %s"), *OtherActor->GetName());
 }
