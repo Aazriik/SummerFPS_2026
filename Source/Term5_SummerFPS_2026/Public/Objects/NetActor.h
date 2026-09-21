@@ -23,8 +23,8 @@ public:
 	UPROPERTY(VisibleAnywhere, Category = "DoorStaticMesh")
 	UStaticMeshComponent* DoorStaticMeshComponent;
 
-	UPROPERTY(EditAnywhere, Category = "Door")
-	ADoor* DoorActor;
+	//UPROPERTY(EditAnywhere, Category = "Door")
+	//ADoor* DoorActor;
 
 	UFUNCTION()
 	void OnEnter();

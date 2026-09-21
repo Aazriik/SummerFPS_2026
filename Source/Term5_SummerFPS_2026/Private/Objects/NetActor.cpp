@@ -1,6 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
-
+#include "GUI/GameMenuWidget.h"
+#include "Kismet/GameplayStatics.h"
 #include "Objects/NetActor.h"
 
 // Sets default values
@@ -23,7 +24,9 @@ ANetActor::ANetActor()
 
 void ANetActor::OnEnter()
 {	
-	DoorActor->OpenDoor();
+	// DoorActor->OpenDoor();
+	UE_LOG(LogTemp, Warning, TEXT("ANetActor OnEnter Triggered."));
+	// UGameMenuWidget->UpdateScore(UGameMenuWidget->Score + 10); // Update the score by adding 10
 	Destroy();
 }
 
