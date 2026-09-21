@@ -2,21 +2,22 @@
 
 #pragma once
 
+#include "Components/BoxComponent.h"
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
-#include "GrabbableActor.generated.h"
+#include "NetActor.generated.h"
 
 UCLASS()
-class TERM5_SUMMERFPS_2026_API AGrabbableActor : public AActor
+class TERM5_SUMMERFPS_2026_API ANetActor : public AActor
 {
 	GENERATED_BODY()
 	
 public:	
 	// Sets default values for this actor's properties
-	AGrabbableActor();
+	ANetActor();
 
-	UPROPERTY(VisibleDefaultsOnly, Category = "Grabbable")
-	UStaticMeshComponent* GrabbableMeshComponent;
+	UPROPERTY(VisibleDefaultsOnly, Category = "Net_BoxCollision")
+	UBoxComponent* CollisionComponent;
 
 protected:
 	// Called when the game starts or when spawned

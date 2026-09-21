@@ -1,28 +1,30 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 
-#include "Objects/GrabbableActor.h"
+#include "Objects/NetActor.h"
 
 // Sets default values
-AGrabbableActor::AGrabbableActor()
+ANetActor::ANetActor()
 {
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
-	GrabbableMeshComponent = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("GrabbableMeshComponent"));
+	CollisionComponent = CreateDefaultSubobject<UBoxComponent>(TEXT("BoxComponent"));
+	RootComponent = CollisionComponent;
+	CollisionComponent->SetBoxExtent(FVector(60.0f, 60.0f, 50.0f));
+	CollisionComponent->SetLineThickness(1.0f);
 
 }
 
 // Called when the game starts or when spawned
-void AGrabbableActor::BeginPlay()
+void ANetActor::BeginPlay()
 {
 	Super::BeginPlay();
-	GrabbableMeshComponent->SetSimulatePhysics(true);
 	
 }
 
 // Called every frame
-void AGrabbableActor::Tick(float DeltaTime)
+void ANetActor::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
