@@ -2,23 +2,21 @@
 
 #pragma once
 
-#include "Components/BoxComponent.h"
 #include "CoreMinimal.h"
-#include "Objects/Door.h"
 #include "GameFramework/Actor.h"
-#include "NetActor.generated.h"
+#include "Door.generated.h"
 
 UCLASS()
-class TERM5_SUMMERFPS_2026_API ANetActor : public AActor
+class TERM5_SUMMERFPS_2026_API ADoor : public AActor
 {
 	GENERATED_BODY()
 	
 public:	
 	// Sets default values for this actor's properties
-	ANetActor();
+	ADoor();
 
-	UPROPERTY(VisibleDefaultsOnly, Category = "Net_BoxCollision")
-	UBoxComponent* CollisionComponent;
+	UFUNCTION()
+	void OpenDoor();
 
 protected:
 	// Called when the game starts or when spawned
