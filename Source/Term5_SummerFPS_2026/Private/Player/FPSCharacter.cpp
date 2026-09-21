@@ -177,7 +177,8 @@ void AFPSCharacter::OnHurtPlayer(float DamageAmount)
 
 void AFPSCharacter::PauseGame()
 {
-	// Set game PAUSED to TRUE, Show Mouse Cursor to TRUE, 
+	// Set game PAUSED to TRUE, Show Mouse Cursor to TRUE, Create and Show Pause Menu Widget.
+	
 }
 
 
