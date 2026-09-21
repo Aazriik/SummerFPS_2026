@@ -15,6 +15,9 @@ public:
 	// Sets default values for this actor's properties
 	ADoor();
 
+	UPROPERTY(VisibleDefaultsOnly, Category = "Door")
+	UStaticMeshComponent* StaticMeshComponent;
+
 	UFUNCTION()
 	void OpenDoor();
 

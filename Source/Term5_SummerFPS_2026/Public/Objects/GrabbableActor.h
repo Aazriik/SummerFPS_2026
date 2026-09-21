@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
+#include "Objects/NetActor.h"
 #include "GrabbableActor.generated.h"
 
 UCLASS()
@@ -17,6 +18,9 @@ public:
 
 	UPROPERTY(VisibleDefaultsOnly, Category = "Grabbable")
 	UStaticMeshComponent* GrabbableMeshComponent;
+
+	UFUNCTION()
+	void HitNetActor(ANetActor* NetActor);
 
 protected:
 	// Called when the game starts or when spawned

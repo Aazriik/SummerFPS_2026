@@ -16,6 +16,12 @@ ANetActor::ANetActor()
 
 }
 
+
+void ANetActor::OnEnter()
+{	
+	DoorActor->OpenDoor();
+}
+
 // Called when the game starts or when spawned
 void ANetActor::BeginPlay()
 {
@@ -29,4 +35,6 @@ void ANetActor::Tick(float DeltaTime)
 	Super::Tick(DeltaTime);
 
 }
+
+
 

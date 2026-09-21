@@ -13,7 +13,6 @@ void UGameMenuWidget::NativeConstruct()
 	UpdateHealthBar(1.0f);
 	UpdateScore(0);
 	UpdateTimer(60);
-	QuitButton->OnClicked.AddDynamic(this, &UGameMenuWidget::OnQuitClicked);
 
 	AFPSCharacter* PlayerCharacter = Cast<AFPSCharacter>(UGameplayStatics::GetPlayerCharacter(GetWorld(), 0));
 	PlayerCharacter->OnPlayerDied.AddDynamic(this, &UGameMenuWidget::OnPlayerDiedUI);
@@ -42,11 +41,6 @@ void UGameMenuWidget::UpdateTimer(int Time)
 	TimerText->SetText(FText::FromString(TimerString));
 }
 
-
-void UGameMenuWidget::OnQuitClicked()
-{
-	UKismetSystemLibrary::QuitGame(GetWorld(), nullptr, EQuitPreference::Quit, false);
-}
 
 void UGameMenuWidget::OnPlayerDiedUI()
 {

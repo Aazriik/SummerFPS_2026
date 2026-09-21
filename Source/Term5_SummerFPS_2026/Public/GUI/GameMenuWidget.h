@@ -4,7 +4,6 @@
 
 #include "CoreMinimal.h"
 #include "Blueprint/UserWidget.h"
-#include "Components/Button.h"
 #include "Components/ProgressBar.h"
 #include "Components/TextBlock.h"
 #include "GameMenuWidget.generated.h"
@@ -29,9 +28,6 @@ public:
 	UPROPERTY(meta = (BindWidget))
 	UTextBlock* TimerText;
 
-	UPROPERTY(meta = (BindWidget))
-	UButton* QuitButton;
-
 	UFUNCTION()
 	void UpdateHealthBar(float HealthPercent);
 
@@ -40,9 +36,6 @@ public:
 
 	UFUNCTION()
 	void UpdateTimer(int Time);
-
-	UFUNCTION()
-	void OnQuitClicked();
 
 	UFUNCTION()
 	void OnPlayerDiedUI();
