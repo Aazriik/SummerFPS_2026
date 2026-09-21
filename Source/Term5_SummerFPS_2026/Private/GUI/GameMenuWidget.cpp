@@ -42,6 +42,7 @@ void UGameMenuWidget::UpdateTimer(int Time)
 	TimerText->SetText(FText::FromString(TimerString));
 }
 
+
 void UGameMenuWidget::OnQuitClicked()
 {
 	UKismetSystemLibrary::QuitGame(GetWorld(), nullptr, EQuitPreference::Quit, false);

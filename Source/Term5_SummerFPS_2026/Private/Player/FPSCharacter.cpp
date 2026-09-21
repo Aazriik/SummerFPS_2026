@@ -175,6 +175,12 @@ void AFPSCharacter::OnHurtPlayer(float DamageAmount)
 	}
 }
 
+void AFPSCharacter::PauseGame()
+{
+	// Set game PAUSED to TRUE, Show Mouse Cursor to TRUE, 
+}
+
+
 float AFPSCharacter::TakeDamage(float DamageAmount, FDamageEvent const& DamageEvent, AController* EventInstigator, AActor* DamageCauser)
 {
 	OnHurtPlayer(DamageAmount);

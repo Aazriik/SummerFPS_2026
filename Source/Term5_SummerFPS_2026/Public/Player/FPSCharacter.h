@@ -54,6 +54,9 @@ public:
 	UPROPERTY(EditDefaultsOnly, Category = "Input")
 	UInputAction* GrabAction;
 
+	UPROPERTY(EditDefaultsOnly, Category = "Input")
+	UInputAction* PauseAction;
+
 
 
 	// Use Camera Component
@@ -98,6 +101,9 @@ public:
 
 	UFUNCTION()
 	void OnHurtPlayer(float DamageAmount);
+
+	UFUNCTION()
+	void PauseGame();
 
 	virtual float TakeDamage(float DamageAmount, FDamageEvent const& DamageEvent, AController* EventInstigator, AActor* DamageCauser) override;
 
