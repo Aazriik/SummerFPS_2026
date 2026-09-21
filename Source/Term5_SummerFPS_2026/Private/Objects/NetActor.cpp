@@ -14,12 +14,17 @@ ANetActor::ANetActor()
 	CollisionComponent->SetBoxExtent(FVector(60.0f, 60.0f, 50.0f));
 	CollisionComponent->SetLineThickness(1.0f);
 
+	DoorStaticMeshComponent = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("DoorStaticMeshComponent"));
+	DoorStaticMeshComponent->SetupAttachment(RootComponent);
+	DoorStaticMeshComponent->SetRelativeScale3D(FVector(2.0f, 1.0f, 20.0f));
+
 }
 
 
 void ANetActor::OnEnter()
 {	
 	DoorActor->OpenDoor();
+	Destroy();
 }
 
 // Called when the game starts or when spawned
