@@ -13,6 +13,11 @@ AGrabbableActor::AGrabbableActor()
 
 }
 
+void AGrabbableActor::HitNetActor(ANetActor* NetActor)
+{
+	NetActor->OnEnter();
+}
+
 // Called when the game starts or when spawned
 void AGrabbableActor::BeginPlay()
 {

@@ -20,6 +20,15 @@ public:
 	UPROPERTY(VisibleDefaultsOnly, Category = "Net_BoxCollision")
 	UBoxComponent* CollisionComponent;
 
+	UPROPERTY(VisibleAnywhere, Category = "DoorStaticMesh")
+	UStaticMeshComponent* DoorStaticMeshComponent;
+
+	//UPROPERTY(EditAnywhere, Category = "Door")
+	//ADoor* DoorActor;
+
+	UFUNCTION()
+	void OnEnter();
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;

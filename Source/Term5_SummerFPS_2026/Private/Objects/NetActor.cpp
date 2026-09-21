@@ -1,6 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
-
+#include "GUI/GameMenuWidget.h"
+#include "Kismet/GameplayStatics.h"
 #include "Objects/NetActor.h"
 
 // Sets default values
@@ -14,6 +15,19 @@ ANetActor::ANetActor()
 	CollisionComponent->SetBoxExtent(FVector(60.0f, 60.0f, 50.0f));
 	CollisionComponent->SetLineThickness(1.0f);
 
+	DoorStaticMeshComponent = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("DoorStaticMeshComponent"));
+	DoorStaticMeshComponent->SetupAttachment(RootComponent);
+	DoorStaticMeshComponent->SetRelativeScale3D(FVector(2.0f, 1.0f, 20.0f));
+
+}
+
+
+void ANetActor::OnEnter()
+{	
+	// DoorActor->OpenDoor();
+	UE_LOG(LogTemp, Warning, TEXT("ANetActor OnEnter Triggered."));
+	// UGameMenuWidget->UpdateScore(UGameMenuWidget->Score + 10); // Update the score by adding 10
+	Destroy();
 }
 
 // Called when the game starts or when spawned
@@ -29,4 +43,6 @@ void ANetActor::Tick(float DeltaTime)
 	Super::Tick(DeltaTime);
 
 }
+
+
 

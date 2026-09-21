@@ -16,12 +16,13 @@ void UPauseWidget::NativeConstruct()
 
 void UPauseWidget::OnResetClicked()
 {
-
+	UGameplayStatics::OpenLevel(this, FName("Lvl_GameMap"));
 }
 
 void UPauseWidget::OnResumeClicked()
 {
-
+	// Close the pause menu and resume the game.
+	RemoveFromParent();
 }
 
 void UPauseWidget::OnQuitClicked()
